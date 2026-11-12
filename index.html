@@ -1,82 +1,342 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Mariano Marcos Memorial State University</title>
 
-    <title> Campus Notices </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="styles.css" />
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+            color: #1e293b;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
 
+        /* Main Website Container */
+        .website-container {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #ffffff 0%, #f3faf6 100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* University Branding */
+        .university-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 36px;
+        }
+
+        .university-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .university-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .university-header h3 {
+            font-size: 21px;
+            font-weight: 700;
+            color: #1b6b4f;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 12px 20px 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.25s ease, border-color 0.25s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #1b6b4f;
+            border-bottom: 2px solid #1b6b4f;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 20px 30px 40px;
+        }
+
+        /* Login Form */
+        .login-container {
+            width: 340px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 32px 28px;
+            box-shadow: 0 12px 32px rgba(27, 107, 79, 0.08);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 12px;
+        }
+
+        .form-group label {
+            width: 85px;
+            flex-shrink: 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group input {
+            width: 100%;
+            min-width: 0;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #f8fafc;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            background-color: #ffffff;
+            border-color: #1b6b4f;
+            box-shadow: 0 0 0 3px rgba(27, 107, 79, 0.15);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            background-color: #1b6b4f;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .login-button:hover {
+            background-color: #14523d;
+            transform: translateY(-1px);
+        }
+
+        /* Image Section */
+        .image-container {
+            width: 340px;
+            height: 270px;
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 650px) {
+            .university-header {
+                padding: 15px;
+            }
+
+            .university-header h3 {
+                font-size: 16px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                flex-direction: column;
+                padding: 25px 15px;
+                gap: 25px;
+            }
+
+            .login-container,
+            .image-container {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="bg1">
-        <header class="card">
-            <img class="logo" src="logo1-transparent.png" alt="DMMMSU Logo" />
-            <div>
-                <h1> DMMMSU - SLUC </h1>
+
+    <div class="website-container">
+
+        <!-- University Header -->
+        <header class="university-header">
+
+            <div class="university-logo">
+                <img src="logo1-transparent.png" alt="DMMMSU Logo" onerror="this.parentElement.textContent='LOGO';">
             </div>
+
+            <h3>DMMMSU</h3>
+
         </header>
-    </div>
 
-    <div class="main-layout">
-        <!-- Left Column: Links -->
-        <aside class="left-sidebar">
-            <h3>Links</h3>
-            <a href="index.html">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <a href="notices.html">Read notices</a>
-        </aside>
+        <!-- Navigation Bar -->
+        <nav>
+            <a href="#home" class="active">HOME</a>
+            <a href="#about">ABOUT US</a>
+            <a href="#contact">CONTACT US</a>
+        </nav>
 
-        <!-- Center Column: Main Content -->
-        <main class="center-content">
-            <p id="sentence1"> Don Mariano Marcos Memorial State University</p>
+        <!-- Main Content -->
+        <main class="main-content" id="home">
 
-            <h1> College of Computer Science </h1>
+            <!-- Login Form -->
+            <section class="login-container">
 
+                <h2>Login Form</h2>
 
-            <h3> Faculty Members </h3>
+                <form id="loginForm">
 
-            <ol>
-                <li> Haydee Limson </li>
-                <li> Darwin Llavorre </li>
-                <li> Enrique Abad </li>
-                <li> Charlie Marzan </li>
-                <li> Carlos Villanueva </li>
-            </ol>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
 
-            <ul>
-                <li> Haydee Limson </li>
-                <li> Darwin Llavorre </li>
-                <li> Enrique Abad </li>
-                <li> Charlie Marzan </li>
-                <li> Carlos Villanueva </li>
-            </ul>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
 
-            <img id="img1" src="ccs.jpg" alt="ANIMAL" width="500px" height="400px" />
+                    <button type="submit" class="login-button">
+                        Login
+                    </button>
+
+                </form>
+
+            </section>
+
+            <!-- Image Section -->
+            <section class="image-container">
+
+                <img src="ccs.jpg" alt="University Image" onerror="this.style.display='none'; this.parentElement.textContent='University Image';">
+
+            </section>
+
         </main>
 
-        <!-- Right Column: Title and Message Form -->
-        <aside class="right-sidebar">
-            <div class="welcome-box">
-                <p id="alert"> Welcome </p>
-            </div>
+        <!-- Footer -->
+        <footer>
+            <p>All Rights Reserved © 2027</p>
+        </footer>
 
-            <h3>Post Notice</h3>
-            <form action="/api/notices" method="post">
-                <label for="title">Title</label>
-                <input id="title" name="title" type="text" required />
-
-                <label for="msg">Message</label>
-                <textarea id="msg" name="message"></textarea>
-
-                <button class="btn" type="submit">Post notice</button>
-            </form>
-        </aside>
     </div>
+
+    <script>
+        // Login Form Interaction
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
+
+            if (usernameInput.value.trim() === "") {
+                alert("Please enter your username.");
+                usernameInput.focus();
+                return;
+            }
+
+            if (passwordInput.value.trim() === "") {
+                alert("Please enter your password.");
+                passwordInput.focus();
+                return;
+            }
+
+            alert("Login submitted successfully!");
+            this.reset();
+        });
+
+        // Navigation Active Link
+        const navLinks = document.querySelectorAll("nav a");
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+
+                navLinks.forEach(nav => nav.classList.remove("active"));
+
+                this.classList.add("active");
+
+            });
+        });
+    </script>
+
 </body>
 
 </html>
